@@ -6,18 +6,16 @@ Implemented as a class with methods to give players turns and check for a winnin
 It looks like this:
 
 ```
-<=============PLAYER 2=============>
+<=============PLAYER 1=============>
 
         |               |
 O       |       O       |       X
 ------------------------------------
-X       |       O       |
+        |       X       |
         |               |
 ------------------------------------
-X       |               |       X
+X       |               |
         |               |
 
-Select a position:
-6
-The game ends in a tie
+Player 1 wins!
 ```
