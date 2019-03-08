@@ -54,6 +54,10 @@ class TicTacToe
 				else
 					return false
 				end
+		else
+			puts ("That spot is taken!")
+			sleep(1)
+			turn(@player)
 		end
 	end
 
@@ -71,15 +75,11 @@ class TicTacToe
 			if turn(@player) then
 				puts ("Player #{@player} wins!")
 				break
-			else
-				puts ("That spot is taken!")
 			end
 			@player = 2
 			if turn(@player) then
 				puts ("Player #{@player} wins!")
 				break
-			else
-				puts ("That spot is taken!")
 			end
 
 		end
