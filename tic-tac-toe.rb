@@ -24,7 +24,7 @@ class TicTacToe
 		puts (' 	|	' + ' 	|	')
 	end
 
-	# checkline is used as a helper function for checkall that returns
+	# checkline is used as a helper function for check_all that returns
 	# the move if all the spots in a line have the same move
 	def checkline(move , spot1 , spot2 , spot3)
 		if @@board[spot1] == move && @@board[spot2] == move && @@board[spot3] == move then
@@ -32,9 +32,9 @@ class TicTacToe
 		end
 	end
 
-	# checkall checks the board for all possible win configurations on a 
+	# check_all checks the board for all possible win configurations on a 
 	# particular move and returns true if a configuration is found
-	def checkall(move)
+	def check_all(move)
 		(0...@@wins.length).each do |i|
 			if checkline(move , @@wins[i][0] , @@wins[i][1] , @@wins[i][2]) == move then
 				return true
@@ -44,7 +44,7 @@ class TicTacToe
 	end
 
 	# turn gives the turn to a particular player, makes the player
-	# select a spot and calls checkall to see if the player has won
+	# select a spot and calls check_all to see if the player has won
 	def turn(player)
 		system "cls"
 		puts ("<=============PLAYER #{player}=============>")
@@ -63,7 +63,7 @@ class TicTacToe
 
 				@@board[@point] = @mark
 				@taken += 1
-				if (checkall(@mark)) then
+				if (check_all(@mark)) then
 					return true
 				else
 					return false
