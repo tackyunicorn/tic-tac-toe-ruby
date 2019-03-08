@@ -82,16 +82,31 @@ class TicTacToe
 		while true do
 
 			if (@taken > 7) then
+				system "cls"
+				puts ("<=============PLAYER #{@player}=============>")
+				puts ()
+				show
+				puts ()
 				return 0
 			end
 
 			@player = 1
 			if turn(@player) then
+				system "cls"
+				puts ("<=============PLAYER #{@player}=============>")
+				puts ()
+				show
+				puts ()
 				return 1
 			end
 
 			@player = 2
 			if turn(@player) then
+				system "cls"
+				puts ("<=============PLAYER #{@player}=============>")
+				puts ()
+				show
+				puts ()
 				return 2
 			end
 
