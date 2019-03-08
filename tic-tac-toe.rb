@@ -24,7 +24,7 @@ class TicTacToe
 		puts (' 	|	' + ' 	|	')
 	end
 
-	# checkline is used as a helper function for checkall that returns the
+	# checkline is used as a helper function for checkall that returns
 	# the move if all the spots in a line have the same move
 	def checkline(move , spot1 , spot2 , spot3)
 		if @@board[spot1] == move && @@board[spot2] == move && @@board[spot3] == move then
@@ -51,7 +51,7 @@ class TicTacToe
 		puts ()
 		show
 		puts ()
-		puts ("Select a position: ")
+		puts ("Select a position [numpad layout]: ")
 		@point = gets.chomp.to_i
 		if (@@board[@point] != 'X' && @@board[@point] != 'O') then
 			if player == 1 then
