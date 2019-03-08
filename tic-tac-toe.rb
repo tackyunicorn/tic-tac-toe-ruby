@@ -98,6 +98,8 @@ class TicTacToe
 				return 0
 			end
 
+			# player 1 is assumed to take X and player 2 assumed to take Y
+			# this setting can be changed in the turn() method
 			@player = 1
 			if turn(@player) then
 				system "cls"
