@@ -53,12 +53,14 @@ class TicTacToe
 		puts ()
 		puts ("Select a position [numpad layout]: ")
 		@point = gets.chomp.to_i
-		if (@@board[@point] != 'X' && @@board[@point] != 'O') then
-			if player == 1 then
-				@mark = 'X'
-			else
-				@mark = 'O'
-			end
+		if (1..9).include?(@point) then
+			if (@@board[@point] != 'X' && @@board[@point] != 'O') then
+				if player == 1 then
+					@mark = 'X'
+				else
+					@mark = 'O'
+				end
+
 				@@board[@point] = @mark
 				@taken += 1
 				if (checkall(@mark)) then
@@ -66,8 +68,14 @@ class TicTacToe
 				else
 					return false
 				end
+
+			else
+				puts ("That spot is taken!")
+				sleep(1)
+				turn(@player)
+			end
 		else
-			puts ("That spot is taken!")
+			puts ("Invalid input")
 			sleep(1)
 			turn(@player)
 		end
