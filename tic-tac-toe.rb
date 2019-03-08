@@ -1,5 +1,7 @@
 class TicTacToe
 
+	# tic-tac-toe board is assumed to be of size 3 x 3
+	@@size = 3
 	# The board is a Hash of spots (keys) and their corresponding values
 	# (empty for now)
 	@@board = { 7 => ' ' , 8 => ' ' , 9 => ' ' ,
