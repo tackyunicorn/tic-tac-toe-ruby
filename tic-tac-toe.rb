@@ -26,7 +26,7 @@ class TicTacToe
         # The board is a Hash of spots (keys) and their corresponding values
         # (empty for now)
         @@board = {}
-        (1..@@size**2).each {|i| @@board[i] = ' '}
+        (1..@@size**2).each {|i| @@board[i] = i.to_s}
 
         # wins is a list containing all possible configurations of the
         # board in the winning state
@@ -48,20 +48,28 @@ class TicTacToe
         (0...@@size).each do |i|
             if i == 0 then
               (0..@@size).each do
-                print ('----')
+                print ('-----')
               end
               puts ()
             end
             (0...@@size).each do |j|
               if j == 0 then
-                print ('| ' + @@board[@@wins[i][j]] + ' |')
+                if @@board[@@wins[i][j]].to_s.length == 2 then
+                    print ('| ' + @@board[@@wins[i][j]] + ' |')
+                else
+                    print ('|  ' + @@board[@@wins[i][j]] + ' |')
+                end
               else
-                print ('  ' + @@board[@@wins[i][j]] + ' |')
+                if @@board[@@wins[i][j]].to_s.length == 2 then
+                    print ('  ' + @@board[@@wins[i][j]] + ' |')
+                else
+                    print ('   ' + @@board[@@wins[i][j]] + ' |')
+                end
               end
             end
             puts ()
             (0..@@size).each do
-              print ('----')
+              print ('-----')
             end
             puts()
         end
@@ -99,7 +107,7 @@ class TicTacToe
         puts ()
         show
         puts ()
-        puts ("Select a position [numpad layout]: ")
+        puts ("Select a position: ")
         @move = gets.chomp.to_i
         if (1..@@size**2).include?(@move) then
             if (@@board[@move] != 'X' && @@board[@move] != 'O') then
