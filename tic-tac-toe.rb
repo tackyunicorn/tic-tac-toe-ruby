@@ -12,7 +12,7 @@ end
 class TicTacToe
 
     # set the default size to be 3 x 3
-    @@size = 3
+    @@size = 4
 
     # used to initialize the spots for the win configurations
     @@spot = 0
@@ -66,18 +66,23 @@ class TicTacToe
 
     # checkline is used as a helper function for check_all that returns
     # the move if all the spots in a line have the same move
-    def checkline(move , spot1 , spot2 , spot3)
-        if @@board[spot1] == move && @@board[spot2] == move && @@board[spot3] == move then
-            return move
+    def checkline(mark , move , config)
+        (0...@@wins[config].length).each do |i|
+            if @@board[@@wins[config][i]] != mark then
+                return false
+            end
         end
+        return true
     end
 
     # check_all checks the board for all possible win configurations on a 
     # particular move and returns true if a configuration is found
-    def check_all(move)
+    def check_all(mark , move)
         (0...@@wins.length).each do |i|
-            if checkline(move , @@wins[i][0] , @@wins[i][1] , @@wins[i][2]) == move then
-                return true
+            if @@wins[i].include?(move) then
+                if checkline(mark , move , i) then
+                    return true
+                end
             end
         end
         return false
@@ -92,18 +97,18 @@ class TicTacToe
         show
         puts ()
         puts ("Select a position [numpad layout]: ")
-        @point = gets.chomp.to_i
-        if (1..9).include?(@point) then
-            if (@@board[@point] != 'X' && @@board[@point] != 'O') then
+        @move = gets.chomp.to_i
+        if (1..@@size**2).include?(@move) then
+            if (@@board[@move] != 'X' && @@board[@move] != 'O') then
                 if player == 1 then
                     @mark = 'X'
                 else
                     @mark = 'O'
                 end
 
-                @@board[@point] = @mark
+                @@board[@move] = @mark
                 @taken += 1
-                if (check_all(@mark)) then
+                if (check_all(@mark , @move)) then
                     return true
                 else
                     return false
@@ -129,7 +134,7 @@ class TicTacToe
 
         while true do
 
-            if (@taken > 7) then
+            if (@taken > @@size**2-2) then
                 system "cls"
                 puts ("<=============PLAYER #{@player}=============>")
                 puts ()
