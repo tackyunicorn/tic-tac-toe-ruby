@@ -1,10 +1,11 @@
 require 'Matrix'
 require './lib/matrix.rb'
 require './lib/tic-tac-toe.rb'
+require './lib/game.rb'
 
 # create a class object for TicTacToe and call the game method
 system "cls"
-game = TicTacToe.new
+game = Game.new
 result = game.game
 
 if result == 0 then
